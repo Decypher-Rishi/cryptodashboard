@@ -1,19 +1,24 @@
 import React from 'react'
-import { FiSearch } from 'react-icons/fi'
+// import { FiSearch } from 'react-icons/fi'
 import Graph from './Graph'
 import Portfolio from './Portfolio'
 import Exchange from './Exchange'
 import Market from './Market'
+import Header from './Header'
+import { useState } from 'react'
 
 export default function Home() {
+
+    const [selectedOptionP, setSelectedOptionP] = useState('usd');
     return (
         <>
 
             <div className='m-4 md:flex'> {/* main div */}
                
                 <div className='w-4/6'>
-                    <div className='flex gap-4 mt-4 mr-2  '>
-                        <div className='border shadow-lg p-2 bg-white px-6 justify-center rounded focus:outline-none  items-center '>    {/* currencry selector */}
+                    <Header  setSelectedOptionP={setSelectedOptionP}/>
+                    {/* <div className='flex gap-4 mt-4 mr-2  '>
+                        <div className='border shadow-lg p-2 bg-white px-6 justify-center rounded focus:outline-none  items-center '>   
                         
                             <form action="">
                                 <select className=' block  w-full  rounded leading-tight focus:outline-none  focus:bg-white '>
@@ -22,15 +27,14 @@ export default function Home() {
                                 </select>
                             </form>
                         </div>
-                        <div className='flex w-full border shadow-lg p-2 bg-white px-2  rounded focus:outline-none items-center '> {/* search bar */}
-                           
+                        <div className='flex w-full border shadow-lg p-2 bg-white px-2  rounded focus:outline-none items-center '>
                             <form action="">
                                 <button className='pl-4 pr-2 text-lg text-slate-400 font-2'><FiSearch /></button>
                                 <input className='text-sm font-medium' type="text" placeholder="Search by coin" name="search" />
                             </form>
                         </div>
 
-                    </div>
+                    </div>   currencry selector & search bar */}
                     <Graph/>
                     {/* <div className='bg-white mt-4 mr-2 shadow-lg rounded'>   
                    
@@ -185,7 +189,7 @@ export default function Home() {
 
                     </div>
                 </div>  market cap */}
-                <Market/>
+                <Market selectedOptionP={selectedOptionP}/>
             </div>
 
         </>
